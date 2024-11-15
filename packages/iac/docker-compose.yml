@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  api:
+    image: hashicorpdemoapp/product-api:v0.0.22
+    ports:
+      - "19090:9090"
+    environment:
+      BIND_ADDRESS: ":9090"
+      PRODUCT_API_DB_CONNECTION: "host=db port=5432 user=postgres password=password dbname=products sslmode=disable"
+      PRODUCT_API_DB_HOST: db
+    volumes:
+      - ./config/conf.json:/conf.json
+    depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: hashicorpdemoapp/product-api-db:v0.0.22
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_DB: products
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
