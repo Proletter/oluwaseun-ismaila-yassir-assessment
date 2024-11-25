@@ -26,31 +26,40 @@ This project demonstrates an advanced implementation of the HashiCups provider u
 ```bash
 pnpm install
 ```
+1. Cd to packages/iac dependencies:
+```bash
+cd packages/iac
+```
 
 2. Start the HashiCups API locally:
 ```bash
-docker-compose up -d
+pnpm compose:up
 ```
-3. Generate provier bindings:
+3. Create test user:
+```bash
+pnpm run create:user
+```
+
+4. Generate provier bindings:
 ```bash
 cdktf get
 ```
 
-4. Run tests:
+5. Run tests:
 ```bash
 pnpm test
 ```
-5. Synthesize infrastructure:
+6. Synthesize infrastructure:
 ```bash
 cdktf synth
 ```
 
-6. Deploy the infrastructure:
+7. Deploy the infrastructure:
 ```bash
 pnpm run deploy
 ```
 
-7. Destroy infrastructure:
+8. Destroy infrastructure:
 ```bash
 cdktf destroy
 ```
